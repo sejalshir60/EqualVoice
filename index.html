@@ -171,6 +171,26 @@
         copyright &copy; 2027 www.equalality.com -All right reserved
         </center>
     </footer>
+    <script>
+document.querySelector('.btn-dark').addEventListener('click', async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const text = document.getElementById('text').value;
+
+    const response = await fetch('http://localhost:5000/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, text })
+    });
+
+    const data = await response.json();
+    alert(data.message);
+});
+</script>
+
     
     
     
